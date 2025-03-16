@@ -1,0 +1,40 @@
+Task: Build a Go-based CLI tool that automates SSH tunneling through a bastion server with a k9s-like interactive UI using Vim-style navigation.
+
+Overview:
+
+The tool should help users create SSH tunnels from local → bastion → remote ports.
+The tool should list available ports on the bastion in a real-time updating UI.
+Users should be able to navigate, select ports, and open tunnels dynamically.
+Key Features:
+
+Bastion Configuration Management:
+Read bastion details from a YAML config file (~/.mytunnel/config.yaml), similar to kubeconfig.
+Users should be able to add bastion servers via CLI (mytunnel add-bastion --name my-bastion ...).
+Support both password and SSH key authentication.
+Real-Time UI (k9s-like)
+Use tview (github.com/rivo/tview) for an interactive terminal UI.
+Display a continuously updating table of open ports on the selected bastion.
+Highlight selected ports.
+Vim-Like Navigation:
+j / k → Navigate through port list.
+Enter / Space → Start SSH tunneling for the selected port.
+t → Toggle to view active tunnels.
+d → Delete/close a tunnel.
+/ → Search/filter available ports.
+:q / esc → Quit.
+SSH Tunneling Management:
+Open tunnels using ssh -L <local_port>:localhost:<remote_port> user@bastion.
+Keep a live list of active tunnels and allow stopping them dynamically.
+Libraries to Use:
+
+golang.org/x/crypto/ssh → SSH connections.
+github.com/rivo/tview → Terminal UI (for k9s-like interface).
+github.com/spf13/cobra → CLI command parsing.
+gopkg.in/yaml.v3 → Config file handling.
+Expected CLI Behavior:
+
+mytunnel → Opens the interactive UI.
+mytunnel list-bastions → Shows available bastions.
+mytunnel add-bastion --name my-bastion ... → Adds a bastion server.
+mytunnel --bastion my-bastion → Launches UI for the selected bastion.
+Inside UI: Users can navigate, tunnel, and manage ports in real time.
