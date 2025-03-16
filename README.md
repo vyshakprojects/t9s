@@ -1,5 +1,5 @@
-# MyTunnel - Interactive SSH Tunneling Manager
-
+# MyTunnel - Interactive SSH Tunneling Manager | WIP
+ 
 MyTunnel is a CLI tool that provides a k9s-like interface for managing SSH tunnels through bastion servers.
 
 ## Features
